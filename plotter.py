@@ -1,7 +1,7 @@
 import label_check as lc
 import matplotlib.pyplot as plt
 
-def plotter(S, kmeans_labels, nmi,  prob_type, prob_title, printer, save_figure):
+def plotter(S, kmeans_labels, nmi,  prob_type, prob_title, printer=False, save_figure=False):
     '''
     plots the labels as chosen by kmeans
     '''
@@ -12,7 +12,7 @@ def plotter(S, kmeans_labels, nmi,  prob_type, prob_title, printer, save_figure)
     if printer: print('k-means labels are:')
     if printer: print(labels[:, None], '\n')
     
-    text = text = 'figures/' + prob_type + '_solve_' + prob_title.replace("s/", '_').replace(".", '_') + '.png'
+    text = 'figures/' + prob_type + '_solve_' + prob_title.replace("s/", '_').replace(".", '_') + '.png'
     title = prob_type + '_' + prob_title + '\nnormalized mutual information score: ' + str(nmi)
 
     # print out problem

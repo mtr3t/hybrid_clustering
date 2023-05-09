@@ -1,6 +1,6 @@
 import numpy as np
 
-def label_check(data, printer):
+def label_check(data, printer=False):
     '''
     this bit of code was provided by dr. phillips translated from r
     to order the labels to better match the groud truth
