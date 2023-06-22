@@ -4,22 +4,22 @@ def load_problem(problem, ground_truth, printer=False, plotter=False, save_figur
     '''
     load the problem to cluster
         problem: problem to cluster
-        ground truth: ground truth of the problem
+        ground_truth: ground truth of the problem
         printer: print variables
         plotter: plot problem with ground truth
         save_figure: save figure to figures folder
     returns:
-        S: data points
+        Y: data points
         gt: ground truth
-        k:  number of clusters
+        n: number of clusters
         
     '''
     
-    # S = a set of points = {s_1,...,s_n} in R^l
-    S = np.loadtxt(problem)
+    # Y = a set of y points = {y_1,...,y_n} in R^l
+    Y = np.loadtxt(problem)
     if printer: print('problem:')
-    if printer: print(S, '\n')
-    if printer: print('problem size:', S.shape[0], 'x', S.shape[1], '\n')
+    if printer: print(Y, '\n')
+    if printer: print('problem size:', Y.shape[0], 'x', Y.shape[1], '\n')
         
     # load the ground truth as gt  
     gt = np.loadtxt(ground_truth).astype(np.int32)
@@ -28,15 +28,15 @@ def load_problem(problem, ground_truth, printer=False, plotter=False, save_figur
         print('ground truth:')
         print(gt[:, None], '\n')
     
-    # calculate the nuber of clusters, k, from the ground truth
-    k = len(np.unique(gt))
-    if printer: print('number of clusters k:', k, '\n')
+    # calculate the nuber of clusters, n, from the ground truth
+    n = len(np.unique(gt))
+    if printer: print('number of clusters n:', n, '\n')
     
     if plotter:
-        if S.shape[1] == 2:
+        if Y.shape[1] == 2:
             import matplotlib.pyplot as plt
             
-            plt.scatter(S[:,0], S[:,1], color = [["red", "blue", "green"][i] for i in gt])
+            plt.scatter(Y[:,0], Y[:,1], color = [["red", "blue"][i] for i in gt])
             plt.title(problem)
             plt.ylabel('y')
             plt.xlabel('x')
@@ -45,4 +45,4 @@ def load_problem(problem, ground_truth, printer=False, plotter=False, save_figur
                 plt.savefig(text)
             plt.show()
             
-    return S, gt, k
+    return Y, gt, n

@@ -5,6 +5,11 @@ import scipy.spatial.distance as sdist
 def spectral_affinity(S, sigma, printer=False, plotter=False):
     '''
     calculates spectral affinity matrix
+    keyword arguments:
+        S: data points
+        sigma: affinity scaling factor
+        printer: print out statments for debugging default=False
+        plotter: plot the problem default=False
     returns:
         A: spectral affinity matrix
     '''
@@ -46,9 +51,13 @@ def spectral_affinity(S, sigma, printer=False, plotter=False):
         
     return A
 
-def laplacian(A, printer, plotter):
+def laplacian(A, printer=False, plotter=False):
     '''
     performs normalized symitric laplacian on incoming affinty matrix
+    keyword arguments:
+        A: affinity matrix
+        printer: print out statments for debugging default=False
+        plotter: plot the problem default=False
     returns:
         L: normalized symitric laplacian
     '''

@@ -10,8 +10,8 @@ def eigen_solver(L, k, printer=False, plotter=False):
         printer: prints all variables
         plotter: plots all variables
     returns:
-        X: top egienvectors
-        Y: X normalized
+        X: top k egienvectors stacked in columns
+        Y: renormalized X matrix
     '''
     
     # calculate eigenvalues and eigenvectors
@@ -33,7 +33,7 @@ def eigen_solver(L, k, printer=False, plotter=False):
     
     if printer: print('top k egienvectors:')
     if printer: print(top_k_e_vecs, '\n')
-        
+    
     X = e_vecs[:,top_k_e_vecs]
     if printer: print('top k egienvectors stacked in columns, X:')
     if printer: print(X, '\n')
@@ -52,14 +52,22 @@ def eigen_solver(L, k, printer=False, plotter=False):
     if np.any(mask):
         print("0 is in the array\n")
         row_sum[mask] = 1.0
-    
-    Y = np.zeros(X.shape)
-    for i in range(X.shape[0]):
-        for j in range(X.shape[1]):
-            Y[i,j] = X[i,j] * (1/np.sqrt(row_sum[j]))
+        
+    norm_row_sum = np.sqrt(row_sum)
+    if printer: print(norm_row_sum[:, None], '\n')
 
+    Y = np.divide(X, norm_row_sum[:, None])
+    
     if printer: print('renormalized matrix, Y:')
     if printer: print(Y, '\n')
+    
+#     YY = np.zeros(X.shape)
+#     for i in range(X.shape[0]):
+#         for j in range(X.shape[1]):
+#             YY[i,j] = X[i,j] * (1/np.sqrt(row_sum[j]))
+    
+#     if printer: print('YY:')
+#     if printer: print(YY, '\n')
 
     if plotter:
         if Y.shape[1] == 2:
