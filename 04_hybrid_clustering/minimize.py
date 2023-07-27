@@ -62,12 +62,12 @@ def minimize(S, set_gamma, printer=False):
     if printer: print('\n************************************************' +
                       '\n         Done solving for coefficents\n')
     
-    ############################################################
-    # zero the diag - this flips the Y points if commented out #
-    # coeff[range(coeff.shape[0]),range(coeff.shape[1])] = 0.0 #
-    # if printer: print('coeff =')                             #
-    # if printer: print(coeff,'\n')                            #
-    ############################################################
+#     ############################################################
+#     # zero the diag - this flips the Y points if commented out #
+#     coeff[range(coeff.shape[0]),range(coeff.shape[1])] = 0.0   #
+#     if printer: print('coeff =')                               #
+#     if printer: print(coeff,'\n')                              #
+#     ############################################################
     
     ## Refine results...
     ## Only use magnitude of the coefficients (no negative values)
