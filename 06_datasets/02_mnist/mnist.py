@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 
 from keras.datasets import mnist
 
-(train_X, train_y), (test_X, test_y) = mnist.load_data()
+# (train_X, train_y), (test_X, test_y) = mnist.load_data()
+
+mnist = spio.loadmat('mnist_all.mat')
 
 f = open('01_mnist.ds', 'w')
 for i in range(10):
