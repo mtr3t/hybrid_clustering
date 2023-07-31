@@ -1,3 +1,5 @@
+import sys
+import time
 import numpy as np
 import load_problem as ld
 import minimize as mn
@@ -30,6 +32,8 @@ def hybrid(sigma=0.25, set_gamma=0.001,
     returns:
         normalized mutual information score
     '''
+    
+    start = time.time()
     
     problem = '../../05_toy_problems/01_simple_two_and_two.tp'
     ground_truth = '../../05_toy_problems/01_simple_two_and_two_ground_truth.tp'
@@ -69,7 +73,10 @@ def hybrid(sigma=0.25, set_gamma=0.001,
     
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
-    print(problem, 'sigma:', round(sigma, 3), 'gamma:', round(set_gamma, 3), 'normalized mutual information score:', round(nmi, 3), '\n')
+    print(problem, '\nsigma:', round(sigma, 3), '\ngamma:', round(set_gamma, 3), '\nk:', set_K, '\nnormalized mutual information score:', round(nmi, 3))
+    
+    end = time.time()
+    print("time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if S.shape[1] == 2:           
@@ -80,9 +87,9 @@ def hybrid(sigma=0.25, set_gamma=0.001,
             ct.connect(S, gt, L_hyb, kmeans.labels_, nmi, prob_type, prob_title, sigma_gamma, printer, save_figure, axis_hold)
             
 if __name__ == '__main__':
-    sigma = 0.25
-    set_gamma = 0.1
-    set_K=0
+    sigma = float(sys.argv[1]) #0.25
+    set_gamma = float(sys.argv[2]) #0.1
+    set_K = int(sys.argv[3]) #0
     plotter = False
     printer = False
     save_figure = False

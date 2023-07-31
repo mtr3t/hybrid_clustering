@@ -25,8 +25,14 @@ def k_means(printer=False, plotter=False, save_figure=False, axis_hold=False):
     
     start = time.time()
     
-    problem = '../../06_datasets/02_mnist/01_mnist.ds'
-    ground_truth = '../../06_datasets/02_mnist/01_mnist_ground_truth.ds'
+#     problem = '../../06_datasets/02_mnist/04_mnist_1400.ds'
+#     ground_truth = '../../06_datasets/02_mnist/01_mnist_1400_ground_truth.ds'
+    
+#     problem = '../../06_datasets/02_mnist/07_mnist_470.ds'
+#     ground_truth = '../../06_datasets/02_mnist/07_mnist_470_ground_truth.ds'
+    
+    problem = '../../06_datasets/02_mnist/08_mnist_180.ds'
+    ground_truth = '../../06_datasets/02_mnist/08_mnist_180_ground_truth.ds'
     
     Y, gt, k = ld.load_problem(problem, ground_truth, printer, plotter, save_figure, axis_hold)
         

@@ -1,3 +1,4 @@
+import sys
 import time
 import numpy as np
 import load_problem as ld
@@ -37,8 +38,14 @@ def subspace_clustering(set_gamma=0.001,
     
     start = time.time()
     
-    problem = '../../06_datasets/01_binary_alpha_digits/01_binary_alpha_digits.ds'
-    ground_truth = '../../06_datasets/01_binary_alpha_digits/01_binary_alpha_digits_ground_truth.ds'
+#     problem = '../../06_datasets/01_binary_alpha_digits/01_binary_alpha_digits_1404.ds'
+#     ground_truth = '../../06_datasets/01_binary_alpha_digits/01_binary_alpha_digits_1404_ground_truth.ds'
+        
+#     problem = '../../06_datasets/01_binary_alpha_digits/04_binary_alpha_digits_468.ds'
+#     ground_truth = '../../06_datasets/01_binary_alpha_digits/04_binary_alpha_digits_468_ground_truth.ds'
+    
+    problem = '../../06_datasets/01_binary_alpha_digits/05_binary_alpha_digits_180.ds'
+    ground_truth = '../../06_datasets/01_binary_alpha_digits/05_binary_alpha_digits_180_ground_truth.ds'
     
     S, gt, k = ld.load_problem(problem, ground_truth, printer, plotter, False, axis_hold)
             
@@ -67,10 +74,10 @@ def subspace_clustering(set_gamma=0.001,
           
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
-    print(problem, 'gamma:', round(set_gamma, 3), 'normalized mutual information score:', round(nmi, 3), '\n')
-    
+    print(problem, '\n', 'gamma: ', round(set_gamma, 3), '\n', 'normalized mutual information score: ', round(nmi, 3), sep='')
+
     end = time.time()
-    print("Time of execution :", (end-start) / 60, "min")
+    print("time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if S.shape[1] == 2:           
@@ -81,8 +88,8 @@ def subspace_clustering(set_gamma=0.001,
             
 
 if __name__ == '__main__':
-    set_gamma = 0.25
-    set_K = 0
+    set_gamma = float(sys.argv[1]) #0.25
+    set_K = float(sys.argv[2]) #0
     plotter = False
     printer = False
     norm_sub = False

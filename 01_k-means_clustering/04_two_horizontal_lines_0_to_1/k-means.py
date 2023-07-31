@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import plotter as pl
 import load_problem as ld
@@ -21,6 +22,8 @@ def k_means(printer=False, plotter=False, save_figure=False, axis_hold=False):
         # Y: data points
         # gt: ground truth
         # k: number of clusters for k_means
+    
+    start = time.time()
         
     problem = '../../05_toy_problems/04_two_horizontal_lines_0_to_1.tp'
     ground_truth = '../../05_toy_problems/03_ground_truth.tp'
@@ -33,6 +36,9 @@ def k_means(printer=False, plotter=False, save_figure=False, axis_hold=False):
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
     print(problem, '\nnormalized mutual information score:', nmi)
+    
+    end = time.time()
+    print("Time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if Y.shape[1] == 2:           

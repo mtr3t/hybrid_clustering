@@ -1,3 +1,4 @@
+import sys
 import time
 import numpy as np
 import load_problem as ld
@@ -26,7 +27,7 @@ def subspace_clustering(set_gamma=0.001,
         problem: to cluster
         ground_truth: of the problem
         set_gamma: convex factor
-        set_K: sets the number of K's <- beeter desc
+        set_K: sets the number of K's <- better desc :(
         norm_sub: norilize matrix or not
         plotter: plot the problem default=False
         final_plotter : plot the mutual connections and final plot after k_means
@@ -37,8 +38,14 @@ def subspace_clustering(set_gamma=0.001,
     
     start = time.time()
     
-    problem = '../../06_datasets/02_mnist/01_mnist.ds'
-    ground_truth = '../../06_datasets/02_mnist/01_mnist_ground_truth.ds'
+#     problem = '../../06_datasets/02_mnist/04_mnist_1400.ds'
+#     ground_truth = '../../06_datasets/02_mnist/01_mnist_1400_ground_truth.ds'
+    
+#     problem = '../../06_datasets/02_mnist/07_mnist_470.ds'
+#     ground_truth = '../../06_datasets/02_mnist/07_mnist_470_ground_truth.ds'
+    
+    problem = '../../06_datasets/02_mnist/08_mnist_180.ds'
+    ground_truth = '../../06_datasets/02_mnist/08_mnist_180_ground_truth.ds'
     
     S, gt, k = ld.load_problem(problem, ground_truth, printer, plotter, False, axis_hold)
             
@@ -67,10 +74,10 @@ def subspace_clustering(set_gamma=0.001,
           
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
-    print(problem, 'gamma:', round(set_gamma, 3), 'normalized mutual information score:', round(nmi, 3), '\n')
-    
+    print(problem, '\ngamma:', round(set_gamma, 3), '\nk:', set_K, '\nnormalized mutual information score:', round(nmi, 3))
+
     end = time.time()
-    print("Time of execution :", (end-start) / 60, "min")
+    print("time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if S.shape[1] == 2:           
@@ -81,8 +88,8 @@ def subspace_clustering(set_gamma=0.001,
             
 
 if __name__ == '__main__':
-    set_gamma = 0.25
-    set_K = 0
+    set_gamma = float(sys.argv[1]) #0.25
+    set_K = float(sys.argv[2]) #0
     plotter = False
     printer = False
     norm_sub = False

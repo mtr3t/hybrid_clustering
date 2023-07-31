@@ -1,3 +1,5 @@
+import sys
+import time
 import numpy as np
 import load_problem as ld
 import spectral as sp
@@ -34,6 +36,8 @@ def spectral_clustering(sigma=0.25,
         normalized mutual information score
     """
     
+    start = time.time()
+    
     problem = '../../05_toy_problems/01_simple_two_and_two.tp'
     ground_truth = '../../05_toy_problems/01_simple_two_and_two_ground_truth.tp'
     
@@ -50,7 +54,10 @@ def spectral_clustering(sigma=0.25,
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
     print('problem :', problem, '\nsigma:', round(sigma, 4),
-          '\nnormalized mutual information score:', round(nmi, 4), '\n')
+          '\nnormalized mutual information score:', round(nmi, 4))
+    
+    end = time.time()
+    print("time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if S.shape[1] == 2:           
@@ -60,7 +67,7 @@ def spectral_clustering(sigma=0.25,
             ct.connect(S, gt, L, kmeans.labels_, nmi, prob_type, prob_title, sigma, printer, save, axis_hold)
 
 if __name__ == '__main__':
-    sigma = 0.25
+    sigma = float(sys.argv[1]) #0.25
     printer = False
     plotter = False
     extra_plotter = False

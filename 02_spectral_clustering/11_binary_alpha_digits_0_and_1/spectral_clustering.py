@@ -1,3 +1,4 @@
+import sys
 import time
 import numpy as np
 import load_problem as ld
@@ -37,8 +38,8 @@ def spectral_clustering(sigma=0.25,
     
     start = time.time()
     
-    problem = '../../06_datasets/01_binary_alpha_digits/02_binary_alpha_digits_0_and_1.ds'
-    ground_truth = '../../06_datasets/01_binary_alpha_digits/02_binary_alpha_digits_0_and_1_ground_truth.ds'
+    problem = '../../06_datasets/01_binary_alpha_digits/02_binary_alpha_digits_0_and_1_78.ds'
+    ground_truth = '../../06_datasets/01_binary_alpha_digits/02_binary_alpha_digits_0_and_1_78_ground_truth.ds'
     
     # load the problem
     S, gt, k = ld.load_problem(problem, ground_truth, printer, plotter, False, axis_hold)
@@ -56,7 +57,7 @@ def spectral_clustering(sigma=0.25,
           '\nnormalized mutual information score:', round(nmi, 4))
     
     end = time.time()
-    print("Time of execution :", (end-start) / 60, "min")
+    print("time of execution :", (end-start) / 60, "min")
     
     if plotter:
         if S.shape[1] == 2:           
@@ -66,7 +67,7 @@ def spectral_clustering(sigma=0.25,
             ct.connect(S, gt, L, kmeans.labels_, nmi, prob_type, prob_title, sigma, printer, save, axis_hold)
 
 if __name__ == '__main__':
-    sigma = 1.234
+    sigma = float(sys.argv[1]) #0.25
     printer = False
     plotter = False
     extra_plotter = False
