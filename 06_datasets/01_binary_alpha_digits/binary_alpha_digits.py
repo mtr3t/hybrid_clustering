@@ -2,6 +2,13 @@ import numpy as np
 import scipy.io as spio
 import matplotlib.pyplot as plt
 
+bad = spio.loadmat('binaryalphadigs.mat', squeeze_me=True)
+
+images = bad['dat']
+nclasses = bad['numclass']
+classlabels = bad['classlabels']
+classcounts = bad['classcounts']
+
 # all data from the binary alpha digits dataset (1404 images)
 f = open('01_binary_alpha_digits_1404.ds', 'w')
 for i in range(len(images)):
