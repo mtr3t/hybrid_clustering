@@ -18,7 +18,7 @@ for i in range(len(images)):
         f.write('\n')
 f.close()
 
-f = open('01_binary_alpha_digits_ground_truth_1404.ds', 'w')
+f = open('01_binary_alpha_digits_1404_ground_truth.ds', 'w')
 for i in range(len(images)):
     for j in range(len(images[i])):
         f.write(str(i))

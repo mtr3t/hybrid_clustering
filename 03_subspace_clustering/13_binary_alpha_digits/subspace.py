@@ -89,7 +89,7 @@ def subspace_clustering(set_gamma=0.001,
 
 if __name__ == '__main__':
     set_gamma = float(sys.argv[1]) #0.25
-    set_K = float(sys.argv[2]) #0
+    set_K = int(sys.argv[2]) #0
     plotter = False
     printer = False
     norm_sub = False
