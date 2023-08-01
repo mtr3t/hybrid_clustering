@@ -74,7 +74,7 @@ def subspace_clustering(set_gamma=0.001,
           
     # calculate the normalized mutual information score
     nmi = normalized_mutual_info_score(gt, kmeans.labels_)
-    print(problem, '\n', 'gamma: ', round(set_gamma, 3), '\n', 'normalized mutual information score: ', round(nmi, 3), sep='')
+    print(problem, '\ngamma:', round(set_gamma, 3), '\nk:', set_K, '\nnormalized mutual information score:', round(nmi, 3))
 
     end = time.time()
     print("time of execution :", (end-start) / 60, "min")
