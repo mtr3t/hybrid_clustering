@@ -31,3 +31,7 @@ def k_means(problem, ground_truth):
     
     end = time.time()
     print("time of execution :", (end-start) / 60, "min")
+    
+    
+if __name__ == '__main__':
+    k_means('01_binary_alpha_digits_1404.ds', '01_binary_alpha_digits_1404_ground_truth.ds)
