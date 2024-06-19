@@ -2,6 +2,7 @@ import time
 import numpy as np
 import load_problem as ld
 from sklearn.cluster import KMeans
+import scipy.spatial.distance as sdist
 from sklearn.metrics.cluster import normalized_mutual_info_score
 
 def spectral(problem, ground_truth, sigma):
@@ -15,7 +16,7 @@ def spectral(problem, ground_truth, sigma):
 
     start = time.time()
 
-	Y, gt, k = ld.load_problem(problem, ground_truth)
+    Y, gt, k = ld.load_problem(problem, ground_truth)
 
     s_dist = sdist.squareform(sdist.pdist(Y)) # pairwise distance
     # sigma = 1 # affinity scaler
@@ -40,4 +41,4 @@ def spectral(problem, ground_truth, sigma):
     
     
 if __name__ == '__main__':
-    spectral('01_binary_alpha_digits_1404.ds', '01_binary_alpha_digits_1404_ground_truth.ds, 0.1)
+    spectral('01_binary_alpha_digits_1404.ds', '01_binary_alpha_digits_1404_ground_truth.ds', 0.9)
