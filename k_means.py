@@ -34,4 +34,4 @@ def k_means(problem, ground_truth):
     
     
 if __name__ == '__main__':
-    k_means('01_binary_alpha_digits_1404.ds', '01_binary_alpha_digits_1404_ground_truth.ds)
+    k_means('01_binary_alpha_digits_1404.ds', '01_binary_alpha_digits_1404_ground_truth.ds')
