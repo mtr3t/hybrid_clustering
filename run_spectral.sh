@@ -22,5 +22,8 @@ module load conda-env/mypackages-py3.11.7
 module list 			# List currently loaded modules.
 hostname 			# Print the hostname of the compute node on which this job is running.
 
+# Change to the directory from which you originally submitted this job.
+cd $SLURM_SUBMIT_DIR/spectral
+
 # Launch serial code
 python spectral.py $1
