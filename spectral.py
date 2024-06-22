@@ -10,6 +10,7 @@ def spectral(problem, ground_truth, sigma):
     keyword arguments:
         problem: problem to cluster
         ground_truth: known ground truth of the problem
+        sigma: width of the neighborhoods
     returns:
         prints normalized mutual information score
     """

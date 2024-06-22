@@ -12,10 +12,13 @@ def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
     keyword arguments:
         problem: to cluster
         ground_truth: known ground truth of the problem
+		sigma: width of the neighborhoods
+		set_gamma: gamma value (used set_gamma as cvxpy uses gamma)
+		ntopco: number of top coefficients
     returns:
         prints normalized mutual information score
     """
-	
+
 	start = time.time()
 	
 	# load problem

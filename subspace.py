@@ -10,10 +10,12 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
     keyword arguments:
         problem: problem to cluster
         ground_truth: known ground truth of the problem
-    returns:
+		set_gamma: gamma value (used set_gamma as cvxpy uses gamma)
+		ntopco: number of top coefficients
+	returns:
         prints normalized mutual information score
     """
-	
+
 	start = time.time()
 	
 	# load problem
