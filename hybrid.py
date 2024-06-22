@@ -9,14 +9,14 @@ from sklearn.metrics.cluster import normalized_mutual_info_score
 def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
 	"""perform subspace clustering
 	keyword arguments:
-        problem: to cluster
-        ground_truth: known ground truth of the problem
+		problem: to cluster
+		ground_truth: known ground truth of the problem
 		sigma: width of the neighborhoods
 		set_gamma: gamma value (used set_gamma as cvxpy uses gamma)
 		ntopco: number of top coefficients
-    returns:
-        prints normalized mutual information score
-    """
+	returns:
+		prints normalized mutual information score
+	"""
 
 	start = time.time()
 	
@@ -88,4 +88,4 @@ def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
 	print("time of execution :", (end-start) / 60, "min")
 
 if __name__ == '__main__':
-    hybrid('prob.tp', 'gt.tp', float(sys.argv[1]), float(sys.argv[2]), int(sys.argv[3]))
+	hybrid('prob.tp', 'gt.tp', float(sys.argv[1]), float(sys.argv[2]), int(sys.argv[3]))

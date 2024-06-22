@@ -8,13 +8,13 @@ from sklearn.metrics.cluster import normalized_mutual_info_score
 def subspace(problem, ground_truth, set_gamma, ntopco):
 	"""perform subspace clustering
 	keyword arguments:
-        problem: problem to cluster
-        ground_truth: known ground truth of the problem
+		problem: problem to cluster
+		ground_truth: known ground truth of the problem
 		set_gamma: gamma value (used set_gamma as cvxpy uses gamma)
 		ntopco: number of top coefficients
 	returns:
-        prints normalized mutual information score
-    """
+		prints normalized mutual information score
+	"""
 
 	start = time.time()
 	
@@ -78,4 +78,4 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
 	print("time of execution :", (end-start) / 60, "min")
 
 if __name__ == '__main__':
-    subspace('prob.tp', 'gt.tp', float(sys.argv[1]), float(sys.argv[2]))
+	subspace('prob.tp', 'gt.tp', float(sys.argv[1]), float(sys.argv[2]))
