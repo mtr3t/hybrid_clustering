@@ -7,7 +7,7 @@ from sklearn.metrics.cluster import normalized_mutual_info_score
 
 def subspace(problem, ground_truth, set_gamma, ntopco):
 	"""perform subspace clustering
-    keyword arguments:
+	keyword arguments:
         problem: problem to cluster
         ground_truth: known ground truth of the problem
 		set_gamma: gamma value (used set_gamma as cvxpy uses gamma)

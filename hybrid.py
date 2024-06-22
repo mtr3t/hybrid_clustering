@@ -6,10 +6,9 @@ from sklearn.cluster import KMeans
 import scipy.spatial.distance as sdist
 from sklearn.metrics.cluster import normalized_mutual_info_score
 
-
 def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
 	"""perform subspace clustering
-    keyword arguments:
+	keyword arguments:
         problem: to cluster
         ground_truth: known ground truth of the problem
 		sigma: width of the neighborhoods
