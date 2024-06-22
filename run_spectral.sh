@@ -6,8 +6,8 @@
 #SBATCH --ntasks=1        	# Total # of MPI tasks (should be 1 for serial job)
 #SBATCH --time=00:02:00    	# Total run time limit (hh:mm:ss)
 #SBATCH -J spectral		# Job name
-#SBATCH -o spectral.o%j      	# Name of stdout output file
-#SBATCH -e spectral.e%j      	# Name of stderr error file
+#SBATCH -o spectral/spectral.o%j      	# Name of stdout output file
+#SBATCH -e spectral/spectral.e%j      	# Name of stderr error file
 #SBATCH -p shared  		# Queue (partition) name
 #SBATCH --mail-user=mtr3t@mtmail.mtsu.edu
 #SBATCH --mail-type=all   	# Send email to above address at begin and end of job
@@ -21,9 +21,6 @@ module load conda-env/mypackages-py3.11.7
 
 module list 			# List currently loaded modules.
 hostname 			# Print the hostname of the compute node on which this job is running.
-
-# Change to the directory from which you originally submitted this job.
-cd $SLURM_SUBMIT_DIR/spectral
 
 # Launch serial code
 python spectral.py $1
