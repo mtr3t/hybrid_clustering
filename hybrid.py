@@ -15,7 +15,7 @@ def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
     returns:
         prints normalized mutual information score
     """
-
+	
 	start = time.time()
 	
 	# load problem

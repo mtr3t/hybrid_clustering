@@ -13,7 +13,7 @@ def spectral(problem, ground_truth, sigma):
     returns:
         prints normalized mutual information score
     """
-
+    
     start = time.time()
     
     # load problem

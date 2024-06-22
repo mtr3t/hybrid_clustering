@@ -13,7 +13,7 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
     returns:
         prints normalized mutual information score
     """
-
+	
 	start = time.time()
 	
 	# load problem

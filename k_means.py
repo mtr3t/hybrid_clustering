@@ -11,7 +11,7 @@ def k_means(problem, ground_truth):
     returns:
         prints normalized mutual information score
     """
-
+    
     start = time.time()
     
     # load problem
