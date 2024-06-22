@@ -15,7 +15,7 @@ def spectral(problem, ground_truth, sigma):
     """
 
     start = time.time()
-
+    
     # load problem
     Y = np.loadtxt(problem) # Y = a set of y points = {y_1,...,y_n} in R^l
     gt = np.loadtxt(ground_truth).astype(np.int32) # load the ground truth as gt
@@ -30,7 +30,7 @@ def spectral(problem, ground_truth, sigma):
     
     top_n_e_vecs = []
     for i in range(k):
-    	top_n_e_vecs.append(-1 * (i+1))    
+        top_n_e_vecs.append(-1 * (i+1))
     X = e_vecs[:,top_n_e_vecs]
     Y = np.divide(X, np.sqrt(np.sum(np.square(X), axis=1))[:, None])
     

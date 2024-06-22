@@ -17,8 +17,8 @@ def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
     """
 
 	start = time.time()
-
-    # load problem
+	
+	# load problem
 	Y = np.loadtxt(problem) # Y = a set of y points = {y_1,...,y_n} in R^l
 	gt = np.loadtxt(ground_truth).astype(np.int32) # load the ground truth as gt
 	k = len(np.unique(gt))    # calculate the nuber of clusters, n, from the ground truth
