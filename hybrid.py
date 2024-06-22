@@ -34,10 +34,10 @@ def hybrid(problem, ground_truth, sigma, set_gamma, ntopco):
 		x = cp.Variable(np.shape(A_sub)[1])
 		# constraint = x[i] == 0
 		obj = cp.Minimize(gamma*cp.norm(A_sub@x-b,2) + cp.norm(x,1)) # Lasso
-		prob = cp.Problem(obj) #, [constraint]) 
+		prob = cp.Problem(obj) #, [constraint])
 		prob.solve(solver='ECOS')
 		coeff[:,i] = np.transpose(x.value)
-    
+
 	coeff[range(coeff.shape[0]),range(coeff.shape[1])] = 0.0
 
 	coeff = np.abs(coeff)

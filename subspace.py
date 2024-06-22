@@ -20,7 +20,7 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
 	Y = np.loadtxt(problem) # Y = a set of y points = {y_1,...,y_n} in R^l
 	gt = np.loadtxt(ground_truth).astype(np.int32) # load the ground truth as gt
 	k = len(np.unique(gt))    # calculate the nuber of clusters, n, from the ground truth
-	
+
 	A_sub = np.transpose(Y)
 	coeff = np.zeros([np.shape(A_sub)[1],np.shape(A_sub)[1]])
 
@@ -31,10 +31,10 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
 		x = cp.Variable(np.shape(A_sub)[1])
 		# constraint = x[i] == 0
 		obj = cp.Minimize(gamma*cp.norm(A_sub@x-b,2) + cp.norm(x,1)) # Lasso
-		prob = cp.Problem(obj) #, [constraint]) 
+		prob = cp.Problem(obj) #, [constraint])
 		prob.solve(solver='ECOS')
 		coeff[:,i] = np.transpose(x.value)
-    
+
 	coeff[range(coeff.shape[0]),range(coeff.shape[1])] = 0.0
 
 	coeff = np.abs(coeff)
