@@ -14,14 +14,10 @@ def k_means(problem, ground_truth):
 
     start = time.time()
     
-    # Y = a set of y points = {y_1,...,y_n} in R^l
-    Y = np.loadtxt(problem)
-        
-    # load the ground truth as gt  
-    gt = np.loadtxt(ground_truth).astype(np.int32)
-    
-    # calculate the nuber of clusters, n, from the ground truth
-    k = len(np.unique(gt))
+    # load problem
+    Y = np.loadtxt(problem) # Y = a set of y points = {y_1,...,y_n} in R^l
+    gt = np.loadtxt(ground_truth).astype(np.int32) # load the ground truth as gt
+    k = len(np.unique(gt))    # calculate the nuber of clusters, n, from the ground truth
         
     # perform kmeans
     kmeans = KMeans(n_clusters=k, max_iter=1000, n_init=20).fit(Y)

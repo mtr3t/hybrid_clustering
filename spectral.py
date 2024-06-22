@@ -16,14 +16,10 @@ def spectral(problem, ground_truth, sigma):
 
     start = time.time()
 
-    # Y = a set of y points = {y_1,...,y_n} in R^l
-    Y = np.loadtxt(problem)
-        
-    # load the ground truth as gt  
-    gt = np.loadtxt(ground_truth).astype(np.int32)
-    
-    # calculate the nuber of clusters, n, from the ground truth
-    k = len(np.unique(gt))
+    # load problem
+    Y = np.loadtxt(problem) # Y = a set of y points = {y_1,...,y_n} in R^l
+    gt = np.loadtxt(ground_truth).astype(np.int32) # load the ground truth as gt
+    k = len(np.unique(gt))    # calculate the nuber of clusters, n, from the ground truth
 
     s_dist = sdist.squareform(sdist.pdist(Y)) # pairwise distance
     A_sp = np.exp((-1.0*np.power(s_dist,2))/(2.0 * np.power(sigma,2))) # affinity matrix
@@ -34,8 +30,7 @@ def spectral(problem, ground_truth, sigma):
     
     top_n_e_vecs = []
     for i in range(k):
-    	top_n_e_vecs.append(-1 * (i+1))
-    
+    	top_n_e_vecs.append(-1 * (i+1))    
     X = e_vecs[:,top_n_e_vecs]
     Y = np.divide(X, np.sqrt(np.sum(np.square(X), axis=1))[:, None])
     
