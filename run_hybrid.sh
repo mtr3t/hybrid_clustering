@@ -23,4 +23,4 @@ module list 			# List currently loaded modules.
 hostname 			# Print the hostname of the compute node on which this job is running.
 
 # Launch serial code
-./hybrid.py $1 $2 $3 $4
+python hybrid.py $1 $2 $3 $4
