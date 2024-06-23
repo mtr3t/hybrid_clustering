@@ -78,4 +78,4 @@ def subspace(problem, ground_truth, set_gamma, ntopco):
     print("time of execution :", (end-start) / 60, "min")
 
 if __name__ == '__main__':
-    subspace('prob.tp', 'gt.tp', float(sys.argv[1]), float(sys.argv[2]))
+    subspace('prob.tp', 'gt.tp', float(sys.argv[1]), int(sys.argv[2]))
